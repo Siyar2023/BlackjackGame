@@ -1,4 +1,4 @@
-public class Card {
+public class    Card {
 
     // Färg (Hjärter, Spader, Ruter, Klöver) för kortet
     private String suit;
