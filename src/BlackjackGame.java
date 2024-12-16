@@ -75,4 +75,38 @@ public class BlackjackGame {
         return value; // Returnera det slutgiltiga värdet på handen
     }
 
+
+    // Metoden determineWinner används för att bestämma vinnaren mellan spelaren och dealern.
+    private void determineWinner() {
+        // Beräknar spelarens och dealerens handvärde genom att använda calculateHandValue-metoden.
+        int playerValue = calculateHandValue(player);
+        int dealerValue = calculateHandValue(dealer);
+
+        // Om spelarens handvärde är större än 21 (spelaren går över 21) förlorar spelaren.
+        if (playerValue > 21) {
+            System.out.println("Du gick över 21 och DU FÖRLORAR.");
+        }
+        // Om dealerens handvärde är större än 21 (dealern går över 21) vinner spelaren.
+        else if (dealerValue > 21) {
+            System.out.println("DEALERN gick över 21. DU VINNER!");
+            player.winBet(currentBet); // Spelaren vinner insatsen
+        }
+        // Om spelarens handvärde är större än dealerens handvärde vinner spelaren.
+        else if (playerValue > dealerValue) {
+            System.out.println("DU VANN! Din hand är högre än DEALERNS.");
+            player.winBet(currentBet); // Spelaren vinner insatsen
+        }
+        // Om spelarens handvärde är mindre än dealerens handvärde förlorar spelaren.
+        else if (playerValue < dealerValue) {
+            System.out.println("DU FÖRLORADE! DEALERNS hand är högre.");
+        }
+        // Om spelarens och dealerens handvärde är lika är det oavgjort och insatsen återgår.
+        else {
+            System.out.println("OAVGJORT! Insatsen återgår till dig.");
+            player.balance += currentBet; // Spelaren får tillbaka sin insats
+        }
+    }
+
+
 }
+
