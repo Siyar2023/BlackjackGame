@@ -49,6 +49,7 @@ public class Deck {
 
     // Denna metod drar (tar bort och returnerar) det första kortet från kortleken.
     public Card drawCard() {
+
         return cards.remove(0);  // Tar bort och returnera det första kortet i listan.
     }
 
