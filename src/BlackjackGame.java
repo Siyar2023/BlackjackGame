@@ -1,4 +1,4 @@
-// Importerar JavaFX-bibliotek som behövs för att skapa en grafisk användargränssnitt (GUI.
+// Importerarg JavaFX-bibliotek som behövs för att skapa en grafisk användargränssnitt (GUI.
 import javafx.application.Application; // Importerar huvudklassen för att starta JavaFX-applikationen.
 import javafx.scene.Scene; // Importerar Scene-klassen, som används för att hålla alla GUI-komponenter (t.ex. knappar, textområden).
 import javafx.scene.control.*; // Importerar alla kontrollkomponenter (som knappar, textfält, etiketter, etc.) från JavaFX.
