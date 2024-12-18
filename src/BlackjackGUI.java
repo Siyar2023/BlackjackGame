@@ -27,4 +27,8 @@ public class BlackjackGUI extends Application {
         primaryStage.setTitle("Blackjack"); // Sätter titeln på fönstret
         primaryStage.show(); // Visar fönstret
     }
+
+    public static void main(String[] args) {
+        launch(args);  // Starta JavaFX applikationen
+    }
 }
