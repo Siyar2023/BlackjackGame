@@ -38,13 +38,20 @@ public class BlackjackGame extends Application {
         Button quitButton = new Button("Avsluta Spel"); // Avsluta spelet helt
 
 
-        // ComboBox för att välja insats (20, 50 eller 100 kr)
+        // ComboBox för att välja insats (25, 50 eller 100 kr)
         ComboBox<Integer> betSelector = new ComboBox<>();
-        betSelector.getItems().addAll(20, 50, 100);
-        betSelector.setValue(20); // Standardinsats är 20 kr
+        betSelector.getItems().addAll(25, 50, 100);
+        betSelector.setValue(25); // Standardinsats är 25 kr
 
 
         playButton.setOnAction(e -> { // Knapp för att starta ett nytt spel
+            if (player.getBalance() == 0) { // Kontrollera om spelaren har 0 balans
+                output.setText("Du har inte tillräckligt med pengar för att spela vidare.\n" +
+                        "Var vänlig Avsluta spelet och starta om för att spela på nytt!\n");
+                playButton.setDisable(true); // Inaktivera "Spela"-knappen
+                return; // Avsluta händelsehanteraren
+            }
+
             currentBet = betSelector.getValue(); // Hämtar vald insats
             if (player.getBalance() < currentBet) { // Kontrollera spelarens balans
                 output.appendText("Du har inte tillräckligt med pengar för denna insats. Var vänlig välj en lägre insats!\n");
@@ -55,7 +62,7 @@ public class BlackjackGame extends Application {
 
 
 
-        hitButton.setOnAction(e -> {   // Knapp för att dra ett kor
+        hitButton.setOnAction(e -> {   // Knapp för att dra ett kort
             if (!isGameActive) return; // Säkerställer att spelet är aktivt
             player.drawCard(deck);  // Spelaren drar ett kort
             updateOutput(); // Uppdaterar visningen av spelarens hand
