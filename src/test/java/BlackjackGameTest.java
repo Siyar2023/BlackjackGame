@@ -3,7 +3,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class BlackjackGameTest {
     private BlackjackGame game;
@@ -30,9 +30,8 @@ public class BlackjackGameTest {
         // Output för att se vad handens värde är
         System.out.println("Player's Hand Value: " + handValue);
 
-        // Gör antaganden om värdet baserat på dragna kort
-        // Du måste här kontrollera och verifiera förväntat värde baserat på de faktiska korten som dras.
+
     }
 
-    // Du kan lägga till fler tester för olika scenarier
+
 }
