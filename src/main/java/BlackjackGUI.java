@@ -1,4 +1,6 @@
 // Importerar nödvändiga JavaFX-klasser för att skapa en GUI-applikation
+
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
