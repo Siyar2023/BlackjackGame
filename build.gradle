@@ -1,0 +1,32 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'C:\\JavaFX17\\javafx-sdk-17.0.13\\lib', include: ['*.jar'])
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+
+test {
+    useJUnitPlatform() // Viktigt för JUnit 5
+}
+
+
+application {
+    mainClassName = 'BlackjackGame' // Byt ut med din huvudklass
+}
+
+run {
+    jvmArgs = [
+            '--module-path', 'C:\\JavaFX17\\javafx-sdk-17.0.13\\lib',
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web,javafx.base'
+    ]
+}

@@ -6,6 +6,9 @@ import javafx.scene.layout.HBox; // Importerar HBox-layouten, som används för 
 import javafx.scene.layout.VBox; // Importerar VBox-layouten, som används för att arrangera GUI-komponenter vertikalt.
 import javafx.stage.Stage; // Importerar Stage-klassen, som representerar huvudfönstret i en JavaFX-applikationen.
 
+
+
+
 public class BlackjackGame extends Application {
     // Definiera spelare, dealer, kortlek, aktuellt bet och flagga för spelets status
     private Player player;
@@ -154,7 +157,7 @@ public class BlackjackGame extends Application {
     }
 
     // Den här metoden beräknar handens värde för en spelare.
-    private int calculateHandValue(Player player) {
+    int calculateHandValue(Player player) {
         int value = 0; // Värdet på handen, börjar på 0
         int aceCount = 0; // Räknar antalet ess i handen
 
