@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BlackjackGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-23T21:57:34" hostname="LAPTOP-ROZ" time="0.061">
+<testsuite name="BlackjackGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-23T23:17:32" hostname="LAPTOP-ROZ" time="0.03">
   <properties/>
-  <testcase name="testCalculateHandValue()" classname="BlackjackGameTest" time="0.061"/>
-  <system-out><![CDATA[Player's Hand Value: 14
+  <testcase name="testCalculateHandValue()" classname="BlackjackGameTest" time="0.03"/>
+  <system-out><![CDATA[Player's Hand Value: 12
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
