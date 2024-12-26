@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PlayerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-12-23T23:17:32" hostname="LAPTOP-ROZ" time="0.015">
+<testsuite name="PlayerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-12-24T13:41:04" hostname="LAPTOP-ROZ" time="0.04">
   <properties/>
-  <testcase name="testPlaceBet()" classname="PlayerTest" time="0.003"/>
-  <testcase name="testClearHand()" classname="PlayerTest" time="0.001"/>
+  <testcase name="testPlaceBet()" classname="PlayerTest" time="0.008"/>
+  <testcase name="testClearHand()" classname="PlayerTest" time="0.003"/>
   <testcase name="testInitialBalance()" classname="PlayerTest" time="0.001"/>
-  <testcase name="testDrawCard()" classname="PlayerTest" time="0.001"/>
-  <testcase name="testShowHand()" classname="PlayerTest" time="0.005"/>
-  <testcase name="testWinBet()" classname="PlayerTest" time="0.0"/>
+  <testcase name="testDrawCard()" classname="PlayerTest" time="0.002"/>
+  <testcase name="testShowHand()" classname="PlayerTest" time="0.011"/>
+  <testcase name="testWinBet()" classname="PlayerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
