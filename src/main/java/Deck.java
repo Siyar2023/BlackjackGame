@@ -5,7 +5,7 @@ import java.util.Collections; // Importerar Collections-klassen som innehåller 
 public class Deck {
 
     // Skapar en privat instansvariabel 'cards' som är en ArrayList av typ Card.
-    private ArrayList<Card> cards; // Lista för att lagra korten
+    ArrayList<Card> cards; // Lista för att lagra korten
     private static final String[] SUITS = {"Hearts", "Spades", "Diamonds", "Clubs"}; // Färger
     private static final String[] RANKS = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"}; // Rangordningar
     private static final int[] VALUES = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
