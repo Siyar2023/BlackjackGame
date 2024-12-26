@@ -1,6 +1,4 @@
 // Importerar nödvändiga JavaFX-klasser för att skapa en GUI-applikation
-
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +12,7 @@ public class BlackjackGUI extends Application {
     @Override
     public void start(Stage primaryStage) {
         TextArea output = new TextArea(); // Skapar en TextArea där spelets resultat eller information kommer att visas
-        Button playButton = new Button("Spela");  // Skapar en Button komponent som användaren kan trycka på för att starta spelet
+        Button playButton = new Button("Spela"); // Skapar en Button komponent som användaren kan trycka på för att starta spelet
 
         BlackjackGame game = new BlackjackGame(); // Skapar en instans av BlackjackGame klassen som hanterar spelets logik
 

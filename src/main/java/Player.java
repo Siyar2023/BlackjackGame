@@ -1,4 +1,3 @@
-// Importerar klasser från Java Standard Library
 // java.util.ArrayList används för att skapa en lista som kan ändras i storlek.
 // java.util.List är en gränssnitt som används för att deklarera listan.
 import java.util.ArrayList;
