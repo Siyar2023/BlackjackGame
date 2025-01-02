@@ -58,7 +58,7 @@ public class Player {
             balance -= amount;  // Minska saldot med insatsbeloppet
         } else {
             // Om insatsen är för hög, skriv ut ett meddelande.
-            System.out.println("Inte tillräckligt med pengar.");  // Meddelande om saldo är för lågt.
+            System.out.println("Not enough money.");  // Meddelande om saldo är för lågt.
         }
     }
 
