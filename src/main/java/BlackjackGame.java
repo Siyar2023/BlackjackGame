@@ -8,56 +8,56 @@ import javafx.stage.Stage; // Importerar Stage-klassen, som representerar huvudf
 
 public class BlackjackGame extends Application {
     // Definiera spelare, dealer, kortlek, aktuellt bet och flagga för spelets status
-    private Player player;
-    private Player dealer;
-    private Deck deck;
-    private TextArea output;
-    private int currentBet;
-    private Label balanceLabel;
-    private boolean isGameActive; // Ny flagga för att kontrollera spelets status
+    private Player player;  // Spelarens objekt.
+    private Player dealer; // Dealerens objekt.
+    private Deck deck; // Kortleken.
+    private TextArea output; // Textområde för att visa meddelanden och spelets tillstånd.
+    private int currentBet; // Den aktuella insatsen.
+    private Label balanceLabel; // Visar spelarens balans.
+    private boolean isGameActive; // Flagga för att kontrollera spelets status
 
     // Konstruktor som initierar spelets objekt: spelare, dealer och kortlek
     public BlackjackGame() {
-        player = new Player("Player"); // Skapa en spelare med namnet "Player"
-        dealer = new Player("Dealer"); // Skapa en dealer med namnet "Dealer"
-        deck = new Deck(); // Skapa en ny kortlek
+        player = new Player("Player"); // Skapar en spelare med namnet "Player".
+        dealer = new Player("Dealer"); // Skapar en dealer med namnet "Dealer"
+        deck = new Deck(); // Skapar en ny kortlek
         isGameActive = false; // Spelet är inaktivt i början
     }
 
-    @Override
+    @Override  //Denna metod överskriver start(Stage primaryStage) från klassen Application, som är en del av JavaFX. När man skapar en JavaFX-applikation är det obligatoriskt att överskriva denna metod för att definiera hur det grafiska användargränssnittet ska byggas upp och visas.
     public void start(Stage primaryStage) {
         output = new TextArea();  // TextArea för att visa spelinformation och meddelanden
         output.setEditable(false); // Gör textområdet endast läsbart
 
-        balanceLabel = new Label("Balans: " + player.getBalance() + " kr"); // Label för att visa spelarens balans
+        balanceLabel = new Label("Balance: " + player.getBalance() + " kr"); // Label för att visa spelarens balans
 
         // Skapar knappar för spelåtgärder
-        Button playButton = new Button("Spela"); // Starta ett nytt spel
-        Button hitButton = new Button("Dra Kort"); // Dra ett nytt kort
-        Button stayButton = new Button("Stanna"); // Stanna och låt dealern spela
-        Button quitButton = new Button("Avsluta Spel"); // Avsluta spelet helt
+        Button playButton = new Button("Play"); // Starta ett nytt spel
+        Button hitButton = new Button("Draw card"); // Dra ett nytt kort
+        Button stayButton = new Button("Stay"); // Stanna och låt dealern spela
+        Button quitButton = new Button("Quit"); // Avsluta spelet helt
 
 
         // ComboBox för att välja insats (25, 50 eller 100 kr)
         ComboBox<Integer> betSelector = new ComboBox<>();
-        betSelector.getItems().addAll(25, 50, 100);
+        betSelector.getItems().addAll(25, 50, 100); // Lägger till möjliga insatsbelopp.
         betSelector.setValue(25); // Standardinsats är 25 kr
 
 
         playButton.setOnAction(e -> { // Knapp för att starta ett nytt spel
             if (player.getBalance() == 0) { // Kontrollera om spelaren har 0 balans
-                output.setText("Du har inte tillräckligt med pengar för att spela vidare.\n" +
-                        "Var vänlig Avsluta spelet och starta om för att spela på nytt!\n");
-                playButton.setDisable(true); // Inaktivera "Spela"-knappen
+                output.setText("You don't have enough money to play on.\n" +
+                        "Please Quit the game and restart to replay!");
+                playButton.setDisable(true); // Inaktivera "Spela"-knappen om saldot är noll.
                 return; // Avsluta händelsehanteraren
             }
 
             currentBet = betSelector.getValue(); // Hämtar vald insats
             if (player.getBalance() < currentBet) { // Kontrollera spelarens balans
-                output.appendText("Du har inte tillräckligt med pengar för denna insats. Var vänlig välj en lägre insats!\n");
+                output.appendText("You don't have enough money for this bet. Please choose a lower stake!\n");
                 return;
             }
-            startNewGame(hitButton, stayButton, playButton); // Startar spelet
+            startNewGame(hitButton, stayButton, playButton); // Startar spelet om insatsen är tillräckligt stort.
         });
 
 
@@ -67,7 +67,7 @@ public class BlackjackGame extends Application {
             player.drawCard(deck);  // Spelaren drar ett kort
             updateOutput(); // Uppdaterar visningen av spelarens hand
             if (calculateHandValue(player) > 21) { // Kontrollera om spelaren förlorar
-                output.appendText("Du gick över 21 och DU FÖRLORAR!\n");
+                output.appendText("You went over 21 and YOU LOSE!");
                 endGame(hitButton, stayButton, playButton); // Avsluta spelet
             }
         });
@@ -90,7 +90,7 @@ public class BlackjackGame extends Application {
         stayButton.setDisable(true);
 
         // Layout för insats och balans
-        HBox betAndBalanceBox = new HBox(10, new Label("Insats: "), betSelector, balanceLabel);
+        HBox betAndBalanceBox = new HBox(10, new Label("Bet: "), betSelector, balanceLabel);
 
         // Huvudlayout med alla UI-element i en vertikal box
         VBox layout = new VBox(10, betAndBalanceBox, playButton, hitButton, stayButton, quitButton, output);
@@ -134,22 +134,22 @@ public class BlackjackGame extends Application {
     }
 
     private void updateOutput() {
-        output.appendText("DIN HAND: " + player.showHand() + " (Summa: " + calculateHandValue(player) + ")\n");
-        output.appendText("DEALER HAND: [ " + dealer.getHand().get(0).getValue() + " ] (Bara ett kort visas)\n");
+        output.appendText("YOUR HAND: " + player.showHand() + " (Sum: " + calculateHandValue(player) + ")\n");
+        output.appendText("DEALER HAND: [ " + dealer.getHand().get(0).getValue() + " ] (Only one card is shown)\n");
 
         output.appendText("\n");
     }
 
     private void updateBalanceLabel() {
-        balanceLabel.setText("Balans: " + player.getBalance() + " kr");
+        balanceLabel.setText("Balance: " + player.getBalance() + " kr");
     }
 
     private void dealerPlay() { // Den här metoden styr dealerns spel
-        output.appendText("DEALER SPELAR...\n");
+        output.appendText("DEALER PLAYS...\n");
         while (calculateHandValue(dealer) < 17) { // Dealern fortsätter att dra kort tills handvärdet är minst 17.
             dealer.drawCard(deck); // Dealern drar ett kort från kortleken
         }
-        output.appendText("DEALERNS HAND: " + dealer.showHand() + " (Summa: " + calculateHandValue(dealer) + ")\n");
+        output.appendText("DEALER HAND: " + dealer.showHand() + " (Sum: " + calculateHandValue(dealer) + ")\n");
 
     }
 
@@ -188,25 +188,25 @@ public class BlackjackGame extends Application {
 
         // Om spelarens handvärde är större än 21 (spelaren går över 21) förlorar spelaren.
         if (playerValue > 21) {
-            output.appendText("Du gick över 21 och DU FÖRLORAR.\n");
+            output.appendText("You went over 21 and YOU LOSE.");
         }
         // Om dealerens handvärde är större än 21 (dealern går över 21) vinner spelaren.
         else if (dealerValue > 21) {
-            output.appendText("DEALERN gick över 21. DU VINNER!\n");
+            output.appendText("The DEALER went over 21. YOU WIN!");
             player.winBet(currentBet); // Spelaren vinner insatsen
         }
         // Om spelarens handvärde är större än dealerens handvärde vinner spelaren.
         else if (playerValue > dealerValue) {
-            output.appendText("DU VANN! Din hand är högre än DEALERNS.\n");
+            output.appendText("YOU WIN! Your hand is higher than the DEALER's.");
             player.winBet(currentBet); // Spelaren vinner insatsen
         }
         // Om spelarens handvärde är mindre än dealerens handvärde förlorar spelaren.
         else if (playerValue < dealerValue) {
-            output.appendText("DU FÖRLORADE! DEALERNS hand är högre.\n");
+            output.appendText("YOU LOST! The DEALER's hand is higher.");
         }
         // Om spelarens och dealerens handvärde är lika är det oavgjort och insatsen återgår.
         else {
-            output.appendText("OAVGJORT! Insatsen återgår till dig.\n");
+            output.appendText("DRAW! The stake returns to you.");
             player.balance += currentBet; // Spelaren får tillbaka sin insats
         }
         updateBalanceLabel();
